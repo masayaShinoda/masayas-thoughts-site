@@ -92,9 +92,10 @@
         text-decoration: none; 
         width: 100%;
         max-width: 100%;
+        color: #131313;
     }
+    .blog_link p, .blog_link:visited p {color: #535353}
     .blog_link:active {color: inherit}
-    .blog_link:visited p {color: #535353;}
     .blog_link img {width: 60vmin; max-width: 50%; max-height: 30vh; object-fit: cover;}
     .title {font-size: 3.8rem}
 
