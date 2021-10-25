@@ -16,7 +16,7 @@
     </span>
     <img 
     class="vert_img"
-    src="/static/images/12-rules-first-bought.webp" alt="First time getting 12 Rules For Life" />
+    src="./static/images/12-rules-first-bought.webp" alt="First time getting 12 Rules For Life" />
 </section>
 
 <style>
