@@ -1,11 +1,22 @@
 <script>
     import SvelteMarkdown from 'svelte-markdown'
     import { page } from '$app/stores'
-    import dayjs from 'dayjs'
+    import dayjs, { isDayjs } from 'dayjs'
+import About from '../about.svelte';
+
     let articles
     function setArticles(value) {
         articles = value
     }
+    let articlesLength
+    function setArticlesLength(value) {
+        articlesLength = value
+    }
+    let articlesIds = []
+    function setArticlesIds(id) {
+        articlesIds = [...articlesIds, id]
+    }
+
     const token = 'fe98495b378ae369d79dea240fba61';
     
     fetch(
@@ -44,6 +55,11 @@
     .then((res) => {
         // console.log(res.data)
         setArticles(res.data['allArticles'])
+        articles.forEach(article => setArticlesIds(article['id']))
+        console.log(articlesIds)
+        setArticlesLength(articles.length)
+        // console.log(articlesLength)
+
     })
     .catch((error) => {
     console.log(error);
@@ -52,33 +68,38 @@
 
 
 {#if articles}
-<article>
-    {#each articles as article}
-    {#if article['id'] === $page.params.id}
-            <s-head>
-                <title>{article['title']} | Masaya's Thoughts</title>
-                <meta name="author" content="Masaya Shida">
-            </s-head>
-            <a 
-            href="/blog"
-            class="backBtn"
-            >&#129128; Blog</a>
-            <h1>{article['title']}</h1>
-            <p>
-                {dayjs(article['date']).format('DD MMM YYYY')}            
-            </p>
-            <div class="bgHero">
-                <img src={article['thumbnail']['url']} alt={article['thumbnail']['alt']}>
-            </div>
-            <img src={article['thumbnail']['url']} alt={article['thumbnail']['alt']} title={article['thumbnail']['alt']}>
-            <span class="blog_content">
-                <SvelteMarkdown source={article['content']} />
-            </span>
+    <article>
+        {#if articlesIds.includes($page.params.id)}
+            {#each articles as article}
+                {#if article['id'] === $page.params.id}
+                    <s-head>
+                        <title>{article['title']} | Masaya's Thoughts</title>
+                        <meta name="author" content="Masaya Shida">
+                    </s-head>
+                    <a 
+                    href="/blog"
+                    class="backBtn"
+                    >&#129128; Blog</a>
+                    <h1>{article['title']}</h1>
+                    <p>
+                        {dayjs(article['date']).format('DD MMM YYYY')}            
+                    </p>
+                    <div class="bgHero">
+                        <img src={article['thumbnail']['url']} alt={article['thumbnail']['alt']}>
+                    </div>
+                    <img src={article['thumbnail']['url']} alt={article['thumbnail']['alt']} title={article['thumbnail']['alt']}>
+                    <span class="blog_content">
+                        <SvelteMarkdown source={article['content']} />
+                    </span>
+                {/if}
+            {/each}
+
             {:else}
-            <h1>Error 404: Not Found</h1>
+            <h2 style="display: block; width: 100%; max-width: 100%; margin: 0 auto; text-align: center">404 <br /> Article not found</h2>
         {/if}
-    {/each}
-</article>
+    </article>
+    {:else}
+    <p>Retrieving article...</p>    
 {/if}
 
 <style>
@@ -112,9 +133,12 @@
         max-width: 100%;    
         object-fit: cover;
         box-shadow: none;
+        margin-bottom: 4rem;
     }
     @media(max-width: 767px) {
         img {width: 100%; max-width: 100%;}    
         .bgHero {display: none}
     }
+
+    /* .blog_content {margn-top: 15rem} */
 </style>

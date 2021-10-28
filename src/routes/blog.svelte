@@ -97,7 +97,7 @@
     .blog_link p, .blog_link:visited p {color: #535353}
     .blog_link:active {color: inherit}
     .blog_link img {width: 60vmin; max-width: 50%; max-height: 30vh; object-fit: cover;}
-    .blog_link .title {font-size: 3.2rem}
+    .blog_link .title {font-size: 3.2rem; max-width: 35ch}
 
     @media(max-width: 1023px) {
         .individual {padding: 2.5rem 0; border-bottom: 2px dashed #999;}
