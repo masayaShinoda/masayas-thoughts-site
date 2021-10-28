@@ -85,7 +85,7 @@
 
 <style>
     @import '/static/styles/loading-anim.css';
-    
+    .individual {padding: 1.8rem 0;}
     .individual:hover, .individual:focus {outline: 2px dashed #999; outline-offset: 1.8rem;}
     .blog_link {
         display: flex; width: 100%; flex-direction: row; justify-content: space-between; align-items: center;
@@ -97,9 +97,14 @@
     .blog_link p, .blog_link:visited p {color: #535353}
     .blog_link:active {color: inherit}
     .blog_link img {width: 60vmin; max-width: 50%; max-height: 30vh; object-fit: cover;}
-    .title {font-size: 3.8rem}
+    .blog_link .title {font-size: 3.2rem}
 
     @media(max-width: 1023px) {
+        .individual {padding: 2.5rem 0; border-bottom: 2px dashed #999;}
+        .individual:first-of-type {padding: 0}
+        .individual:last-of-type{border: 0;}
+        .individual:hover, .individual:focus {outline: 0;}
+        
         .blog_link img {min-width: 30vw}
     }
 
@@ -108,7 +113,7 @@
             flex-direction: column;
             align-items: flex-start;
         }
-        .title {font-size: 3.2rem}
+        .blog_link .title {font-size: 3.2rem}
         .blog_link img {margin-top: 2.5vh; max-width: 100%; min-width: 100%}
     }
 

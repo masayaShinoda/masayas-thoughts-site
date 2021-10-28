@@ -22,7 +22,7 @@ div, span, p, a, ul, ol, q, blockquote {
   font-size: 1.6rem;
   line-height: 1.6;
 }
-h1, h2 {max-width: 45ch;}
+h1, h2 {max-width: 30ch;}
 span, p, a, ul, ol, q, blockquote {
   max-width: 60ch;
   margin: 1.8rem 0;
