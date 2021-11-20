@@ -22,6 +22,6 @@
   "dependencies": {
     "dayjs": "^1.10.7",
     "moment": "^2.29.1",
-    "svelte-markdown": "^0.1.13"
+    "svelte-markdown": "^0.1.14"
   }
 }

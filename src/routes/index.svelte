@@ -2,7 +2,7 @@
     import Hero from '$lib/hero.svelte'
 </script>
 
-<s-head>
+<svelte:head>
     <title>Masaya's Thoughts</title>
-</s-head>
+</svelte:head>
 <Hero />

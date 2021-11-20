@@ -2,7 +2,6 @@
     import SvelteMarkdown from 'svelte-markdown'
     import { page } from '$app/stores'
     import dayjs, { isDayjs } from 'dayjs'
-import About from '../about.svelte';
 
     let articles
     function setArticles(value) {
@@ -59,10 +58,9 @@ import About from '../about.svelte';
         console.log(articlesIds)
         setArticlesLength(articles.length)
         // console.log(articlesLength)
-
     })
     .catch((error) => {
-    console.log(error);
+        console.log(error);
     });
 </script>
 
@@ -72,6 +70,7 @@ import About from '../about.svelte';
         {#if articlesIds.includes($page.params.id)}
             {#each articles as article}
                 {#if article['id'] === $page.params.id}
+                    <!-- {console.log(article['content'])} -->
                     <s-head>
                         <title>{article['title']} | Masaya's Thoughts</title>
                         <meta name="author" content="Masaya Shida">
