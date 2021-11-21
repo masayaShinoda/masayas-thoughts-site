@@ -4,10 +4,8 @@
 
 <div class="nav_container">
     <div class="nav_content">
-        <a href="/">
-            <h1>
-                Masaya's Thoughts
-            </h1>
+        <a href="/" style="font-size: 2.8rem">
+            Masaya's Thoughts
         </a>
         <nav>
             <a 
