@@ -18,6 +18,7 @@ I knew little about the West, its culture, its emphasis on individuality, and ho
 `
 </script>
 <svelte:head>
+    <title>About | Masaya's Thoughts</title>
     <meta name="description" content="About Masaya">
 </svelte:head>
 <h1>About</h1>
