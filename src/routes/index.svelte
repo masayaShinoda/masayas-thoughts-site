@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/globals.css">
 
-    <meta name="keywords" content="masaya, masaya's blog, masayablog, articles by masaya, masayashida, masaya shida, shida masaya, articles by shida masaya, blogs by shida masaya, shida masaya blog, shida masaya articles, masaya's thoughts, masaya thoughts, shida masaya thoughts, masaya shida opinion, sveltekit blog, svelteblog">
-
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Masaya's Thoughts">

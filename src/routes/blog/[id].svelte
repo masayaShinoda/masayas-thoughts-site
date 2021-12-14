@@ -75,13 +75,13 @@
                 <!-- Open Graph / Facebook -->
                 <meta property="og:type" content="website">
                 <meta property="og:title" content={`${article['title']} | Masaya's Thoughts`}>
-                <!-- <meta property="og:description" content="Expressing my thoughts and worldview as a Khmer-Japanese through writing."> -->
+                <meta property="og:description" content={article['date']}>
                 <meta property="og:image" content={article['thumbnail']['url']}>
 
                 <!-- Twitter -->
                 <meta property="twitter:card" content="summary_large_image">
                 <meta property="twitter:title" content={`${article['title']} | Masaya's Thoughts`}>
-                <!-- <meta property="twitter:description" content="Expressing my thoughts and worldview as a Khmer-Japanese through writing."> -->
+                <meta property="twitter:description" content={article['date']}>
                 <meta property="twitter:image" content={article['thumbnail']['url']}>
                 
                 {/if}
