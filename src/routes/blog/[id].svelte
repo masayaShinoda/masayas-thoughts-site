@@ -72,6 +72,7 @@
                 {#if article['id'] === $page.params.id}
                 <title>{article['title']} | Masaya's Thoughts</title>
                 <meta name="author" content="Masaya Shida">
+                <meta name="description" content={article['title']}>
                 <!-- Open Graph / Facebook -->
                 <meta property="og:type" content="website">
                 <meta property="og:title" content={`${article['title']} | Masaya's Thoughts`}>

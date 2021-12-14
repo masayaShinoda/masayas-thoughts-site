@@ -50,7 +50,7 @@
 
 <svelte:head>
     <title>Blog | Masaya's Thoughts</title>
-    <meta name="description" content="Masaya's blog">
+    <meta name="description" content="Articles by Masaya">
 
 </svelte:head>
 <div>
