@@ -65,27 +65,36 @@
 </script>
 
 
+<svelte:head>
+    {#if articles}
+        {#if articlesIds.includes($page.params.id)}
+            {#each articles as article}
+                {#if article['id'] === $page.params.id}
+                <title>{article['title']} | Masaya's Thoughts</title>
+                <meta name="author" content="Masaya Shida">
+                <!-- Open Graph / Facebook -->
+                <meta property="og:type" content="website">
+                <meta property="og:title" content={`${article['title']} | Masaya's Thoughts`}>
+                <!-- <meta property="og:description" content="Expressing my thoughts and worldview as a Khmer-Japanese through writing."> -->
+                <meta property="og:image" content={article['thumbnail']['url']}>
+
+                <!-- Twitter -->
+                <meta property="twitter:card" content="summary_large_image">
+                <meta property="twitter:title" content={`${article['title']} | Masaya's Thoughts`}>
+                <!-- <meta property="twitter:description" content="Expressing my thoughts and worldview as a Khmer-Japanese through writing."> -->
+                <meta property="twitter:image" content={article['thumbnail']['url']}>
+                
+                {/if}
+            {/each}
+        {/if}
+    {/if}
+</svelte:head>
 {#if articles}
     <article>
         {#if articlesIds.includes($page.params.id)}
             {#each articles as article}
                 {#if article['id'] === $page.params.id}
                     <!-- {console.log(article['content'])} -->
-                    <s-head>
-                        <title>{article['title']} | Masaya's Thoughts</title>
-                        <meta name="author" content="Masaya Shida">
-                        <!-- Open Graph / Facebook -->
-                        <meta property="og:type" content="website">
-                        <meta property="og:title" content={`${article['title']} | Masaya's Thoughts`}>
-                        <!-- <meta property="og:description" content="Expressing my thoughts and worldview as a Khmer-Japanese through writing."> -->
-                        <meta property="og:image" content={article['thumbnail']['url']}>
-
-                        <!-- Twitter -->
-                        <meta property="twitter:card" content="summary_large_image">
-                        <meta property="twitter:title" content={`${article['title']} | Masaya's Thoughts`}>
-                        <!-- <meta property="twitter:description" content="Expressing my thoughts and worldview as a Khmer-Japanese through writing."> -->
-                        <meta property="twitter:image" content={article['thumbnail']['url']}>
-                    </s-head>
                     <a 
                     href="/blog"
                     class="backBtn"

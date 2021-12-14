@@ -48,11 +48,11 @@
     });
 </script>
 
-<s-head>
+<svelte:head>
     <title>Blog | Masaya's Thoughts</title>
     <meta name="description" content="Masaya's blog">
 
-</s-head>
+</svelte:head>
 <div>
     {#if articles}
         {#each articles as {id, title, date, topic, thumbnail}}
