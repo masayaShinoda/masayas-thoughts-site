@@ -23,6 +23,7 @@
                 id
                 active
                 title
+                slug
                 khmer
                 topic
                 date
@@ -55,11 +56,11 @@
 </svelte:head>
 <div>
     {#if articles}
-        {#each articles as {id, title, date, topic, thumbnail}}
+        {#each articles as {slug, title, date, topic, thumbnail}}
         <section class="individual">
             <a 
             class="blog_link"
-            href={`/blog/${id}`}
+            href={`/blog/${slug}`}
             >   
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                     <h1 class="title">{title}</h1>

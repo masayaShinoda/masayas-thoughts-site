@@ -7,9 +7,9 @@
     function setArticles(value) {
         articles = value
     }
-    let articlesLength
-    function setArticlesLength(value) {
-        articlesLength = value
+    let articlesSlugs = []
+    function setArticlesSlugs(slug) {
+        articlesSlugs = [...articlesSlugs, slug]
     }
     let articlesIds = []
     function setArticlesIds(id) {
@@ -34,6 +34,7 @@
                 id
                 active
                 title
+                slug
                 khmer
                 topic
                 date
@@ -54,10 +55,11 @@
     .then((res) => {
         // console.log(res.data)
         setArticles(res.data['allArticles'])
-        articles.forEach(article => setArticlesIds(article['id']))
-        console.log(articlesIds)
-        setArticlesLength(articles.length)
-        // console.log(articlesLength)
+        articles.forEach(article => {
+            setArticlesIds(article['id'])
+            setArticlesSlugs(article['slug'])
+        })
+        console.log(articlesIds, articlesSlugs)
     })
     .catch((error) => {
         console.log(error);
@@ -66,10 +68,9 @@
 
 
 <svelte:head>
-    {#if articles}
-        {#if articlesIds.includes($page.params.id)}
+        {#if articlesSlugs.includes($page.params.slug)}
             {#each articles as article}
-                {#if article['id'] === $page.params.id}
+                {#if article['slug'] === $page.params.slug}
                 <title>{article['title']} | Masaya's Thoughts</title>
                 <meta name="author" content="Masaya Shida">
                 <meta name="description" content={article['title']}>
@@ -88,13 +89,12 @@
                 {/if}
             {/each}
         {/if}
-    {/if}
 </svelte:head>
 {#if articles}
     <article>
-        {#if articlesIds.includes($page.params.id)}
+        {#if articlesSlugs.includes($page.params.slug)}
             {#each articles as article}
-                {#if article['id'] === $page.params.id}
+                {#if article['slug'] === $page.params.slug}
                     <!-- {console.log(article['content'])} -->
                     <a 
                     href="/blog"
