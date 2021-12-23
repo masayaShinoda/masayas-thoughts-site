@@ -19,4 +19,4 @@ There have been multiple occasions where the pressure of replying to text messag
 
 As freelancers, it is our responsibility to take into consideration availability and agreeing upon office hours before sending out our contracts.
 
-Employers and clients need to take into consideration the unwanted side-effects of the stress a person can experience from the pressure of being expected to be constantly ready for work. The freelance developer coding your company's website, the graphic designer re-branding your company, or anyone involved in a project with you will be less productive, less creative, and will come to the conclusion of judging their working experience as being unpleasant.
+Employers and clients, on the other hand, need to take into consideration the unwanted side-effects of the stress a person can experience from the pressure of being expected to be constantly ready for work. The freelance developer coding your company's website, the graphic designer re-branding your company, or anyone involved in a project with you will be less productive, less creative, and will come to the conclusion of judging their working experience as being unpleasant.
