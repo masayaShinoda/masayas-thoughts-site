@@ -2,6 +2,7 @@
     import SvelteMarkdown from 'svelte-markdown'
     import { page } from '$app/stores'
     import dayjs, { isDayjs } from 'dayjs'
+    import SEO from '$lib/seo.svelte'
 
     let articles
     function setArticles(value) {
@@ -67,35 +68,21 @@
 </script>
 
 
-<svelte:head>
-        {#if articlesSlugs.includes($page.params.slug)}
-            {#each articles as article}
-                {#if article['slug'] === $page.params.slug}
-                <title>{article['title']} | Masaya's Thoughts</title>
-                <meta name="author" content="Masaya Shida">
-                <meta name="description" content={article['title']}>
-                <!-- Open Graph / Facebook -->
-                <meta property="og:type" content="website">
-                <meta property="og:title" content={`${article['title']} | Masaya's Thoughts`}>
-                <meta property="og:description" content={article['date']}>
-                <meta property="og:image" content={article['thumbnail']['url']}>
+    <!-- export let metaDescription
+    export let title
+    export let dateWritten
+    export let thumbnail -->
 
-                <!-- Twitter -->
-                <meta property="twitter:card" content="summary_large_image">
-                <meta property="twitter:title" content={`${article['title']} | Masaya's Thoughts`}>
-                <meta property="twitter:description" content={article['date']}>
-                <meta property="twitter:image" content={article['thumbnail']['url']}>
-                
-                {/if}
-            {/each}
-        {/if}
-</svelte:head>
-{#if articles}
+    {#if articles}
     <article>
         {#if articlesSlugs.includes($page.params.slug)}
-            {#each articles as article}
-                {#if article['slug'] === $page.params.slug}
-                    <!-- {console.log(article['content'])} -->
+        {#each articles as article}
+        {#if article['slug'] === $page.params.slug}
+                <SEO
+                    title={article['title']}
+                    dateWritten={dayjs(article['date']).format('DD MMM YYYY')}
+                    thumbnail={article['thumbnail']['url']}
+                />
                     <a 
                     href="/blog"
                     class="backBtn"
