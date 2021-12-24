@@ -7,6 +7,7 @@
     <!-- head content -->
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/globals.css">
+    <meta name="description" content="Blog article written by Masaya Shida.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
