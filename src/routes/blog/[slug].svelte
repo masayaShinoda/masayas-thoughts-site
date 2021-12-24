@@ -1,5 +1,7 @@
 <script context="module">
     // context="module" because we need to load data before rendering component
+    export const prerender = true;
+    
     import SvelteMarkdown from 'svelte-markdown'
     import { page } from '$app/stores'
     import dayjs, { isDayjs } from 'dayjs'
