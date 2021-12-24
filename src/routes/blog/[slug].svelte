@@ -1,21 +1,19 @@
-<script context="module">
-    // context="module" because we need to load data before rendering component
-    export const prerender = true;
+<script>
     
     import SvelteMarkdown from 'svelte-markdown'
     import { page } from '$app/stores'
     import dayjs, { isDayjs } from 'dayjs'
     import SEO from '$lib/seo.svelte'
 
-    let articles
+    export let articles
     function setArticles(value) {
         articles = value
     }
-    let articlesSlugs = []
+    export let articlesSlugs = []
     function setArticlesSlugs(slug) {
         articlesSlugs = [...articlesSlugs, slug]
     }
-    let articlesIds = []
+    export let articlesIds = []
     function setArticlesIds(id) {
         articlesIds = [...articlesIds, id]
     }
@@ -68,6 +66,7 @@
     .catch((error) => {
         console.log(error);
     });
+    
 </script>
 
 
@@ -76,7 +75,10 @@
     export let dateWritten
     export let thumbnail -->
 
-    {#if articles}
+    {#await articles}
+    <p>Retrieving article...</p>    
+    
+    {:then articles}
     <!-- <article> -->
         {#if articlesSlugs.includes($page.params.slug)}
         {#each articles as article}
@@ -103,14 +105,11 @@
                     </span>
                 {/if}
             {/each}
-
-            {:else}
+            {/if}
+            <!-- </article> -->
+            {:catch error}
             <h2 style="display: block; width: 100%; max-width: 100%; margin: 0 auto; text-align: center">404 <br /> Article not found</h2>
-        {/if}
-    <!-- </article> -->
-    {:else}
-    <p>Retrieving article...</p>    
-{/if}
+    {/await}
 
 <style>
     @import '/static/styles/_variables.css';
