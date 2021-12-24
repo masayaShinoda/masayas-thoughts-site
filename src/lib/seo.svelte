@@ -1,7 +1,10 @@
+<script context="module">
+  	export const prerender = true
+</script>
 <script>
-    export let title
-    export let dateWritten
-    export let thumbnail
+  export let title
+  export let dateWritten
+  export let thumbnail
 </script>
    
   

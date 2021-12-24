@@ -77,7 +77,7 @@
     export let thumbnail -->
 
     {#if articles}
-    <article>
+    <!-- <article> -->
         {#if articlesSlugs.includes($page.params.slug)}
         {#each articles as article}
         {#if article['slug'] === $page.params.slug}
@@ -107,7 +107,7 @@
             {:else}
             <h2 style="display: block; width: 100%; max-width: 100%; margin: 0 auto; text-align: center">404 <br /> Article not found</h2>
         {/if}
-    </article>
+    <!-- </article> -->
     {:else}
     <p>Retrieving article...</p>    
 {/if}
