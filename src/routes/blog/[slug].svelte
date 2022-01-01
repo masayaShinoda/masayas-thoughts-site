@@ -1,5 +1,5 @@
 <script>
-    
+    import { onMount } from 'svelte'
     import SvelteMarkdown from 'svelte-markdown'
     import { page } from '$app/stores'
     import dayjs, { isDayjs } from 'dayjs'
@@ -19,53 +19,57 @@
     }
 
     const token = 'fe98495b378ae369d79dea240fba61';
-    
-    fetch(
-    'https://graphql.datocms.com/',
-    {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-        query: `
+
+    onMount(() => {
+
+        fetch(
+        'https://graphql.datocms.com/',
         {
-            allArticles {
-                id
-                active
-                title
-                slug
-                khmer
-                topic
-                date
-                thumbnail {
-                alt
-                url
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+            query: `
+            {
+                allArticles {
+                    id
+                    active
+                    title
+                    slug
+                    khmer
+                    topic
+                    date
+                    thumbnail {
+                    alt
+                    url
+                    }
+                    createdAt
+                    updatedAt
+                    content
                 }
-                createdAt
-                updatedAt
-                content
             }
+            `
+            }),
         }
-        `
-        }),
-    }
-    )
-    .then(res => res.json())
-    .then((res) => {
-        // console.log(res.data)
-        setArticles(res.data['allArticles'])
-        articles.forEach(article => {
-            setArticlesIds(article['id'])
-            setArticlesSlugs(article['slug'])
+        )
+        .then(res => res.json())
+        .then((res) => {
+            // console.log(res.data)
+            setArticles(res.data['allArticles'])
+            articles.forEach(article => {
+                setArticlesIds(article['id'])
+                setArticlesSlugs(article['slug'])
+            })
+            console.log(articlesIds, articlesSlugs)
         })
-        console.log(articlesIds, articlesSlugs)
+        .catch((error) => {
+            console.log(error);
+        });
     })
-    .catch((error) => {
-        console.log(error);
-    });
+
     
 </script>
 
