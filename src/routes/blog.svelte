@@ -1,81 +1,41 @@
+<script context="module">
+    export const load = async ({ fetch }) => {
+        const res = await fetch('/api/blog.json')
+        const data = await res.json()
+
+        return {
+            props: {
+                data
+            }
+        }
+    }
+</script>
 <script>
     import dayjs from 'dayjs'
 
-    let articles
-    function setArticles(value) {
-        articles = value
-    }
-    const token = 'fe98495b378ae369d79dea240fba61';
-    
-    fetch(
-    'https://graphql.datocms.com/',
-    {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-        query: `
-        {
-            allArticles {
-                id
-                active
-                title
-                slug
-                khmer
-                topic
-                date
-                thumbnail {
-                    alt
-                    url
-                }
-                createdAt
-                updatedAt
-            }
-        }
-        `
-        }),
-    }
-    )
-    .then(res => res.json())
-    .then((res) => {
-        // console.log(res.data)
-        setArticles(res.data['allArticles'])
-    })
-    .catch((error) => {
-    console.log(error);
-    });
+    export let data
+    console.log(data)
+
+    // let articles
+    // function setArticles(value) {
+    //     articles = value
+    // }
 </script>
 
 <svelte:head>
     <title>Blog | Masaya's Thoughts</title>
     <meta name="description" content="Articles by Masaya">
-
 </svelte:head>
 <div>
-    {#if articles}
-        {#each articles as {slug, title, date, topic, thumbnail}}
-        <section class="individual">
-            <a 
-            class="blog_link"
-            href={`/blog/${slug}`}
-            >   
-                <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <h1 class="title">{title}</h1>
-                    <p style="margin: 0">Category: {topic}</p>
-                    <p style="margin: 0">{dayjs(date).format('DD MMM YYYY')}</p>
-                </div>                 
-                {#if thumbnail}
-                <img src={thumbnail['url']} alt={thumbnail['alt']} />
-                {/if}
-            </a>            
-        </section>
-        {/each}
-        {:else}
-        <span class="loader"></span>
-    {/if}
+    <ul>
+    {#each data['articles'] as article}
+    <li>
+        <a href={`/article/` + article['slug']}>{article['title']}</a>
+
+    </li>
+    {/each}
+        
+    </ul>
 </div>
 
 <style>
