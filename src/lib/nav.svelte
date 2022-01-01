@@ -10,15 +10,15 @@
         <nav>
             <a 
             href="/"
-            class={$page.path === '/' ? 'active' : ''}
+            class={$page.url.pathname === '/' ? 'active' : ''}
             >Home</a>
             <a 
             href="/blog" 
-            class={$page.path === '/blog' ? 'active' : ''}
+            class={$page.url.pathname === '/blog' ? 'active' : ''}
             >Blog</a>
             <a 
             href="/about"
-            class={$page.path === '/about' ? 'active' : ''}
+            class={$page.url.pathname === '/about' ? 'active' : ''}
             >About</a>
         </nav>
 
